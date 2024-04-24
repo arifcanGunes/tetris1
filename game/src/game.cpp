@@ -36,7 +36,6 @@ void Game::Draw(){
         counter = 15;
         gameOver = true;
     }
-    std::cout<<counter<<std::endl;
     if(nextBlock.id == 3){
         nextBlock.xCoordidante = 345;
         nextBlock.yCoordinate = 245;
@@ -112,7 +111,7 @@ void Game::MoveLeft()
 {
     if(!gameOver){
         currentBlock.Move(0,-1);
-        if(isBlockOutside()){
+        if(isBlockOutside() || BlockFits() == false){
             currentBlock.Move(0,1);
         }
     }
@@ -122,7 +121,7 @@ void Game::MoveLeft()
 void Game::MoveRight(){
     if(!gameOver){
         currentBlock.Move(0,1);
-        if(isBlockOutside()){
+        if(isBlockOutside() || BlockFits() == false){
             currentBlock.Move(0,-1);
         }
     }
@@ -132,7 +131,7 @@ void Game::MoveRight(){
 void Game::MoveUp(){
     if(!gameOver){
         currentBlock.Move(-1,0);
-        if(isBlockOutside()){
+        if(isBlockOutside() || BlockFits() == false){
             currentBlock.Move(1,0);
         }
     }
@@ -141,7 +140,7 @@ void Game::MoveUp(){
 void Game::MoveDown(){
     if(!gameOver){
         currentBlock.Move(1,0);
-        if(isBlockOutside()){
+        if(isBlockOutside() || BlockFits() == false){
             currentBlock.Move(-1,0);
         }
     }
